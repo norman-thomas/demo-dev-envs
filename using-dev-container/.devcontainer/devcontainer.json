@@ -1,0 +1,62 @@
+// Update the VARIANT arg in docker-compose.yml to pick a Python version: 3, 3.8, 3.7, 3.6 
+{
+    "name": "Python 3 & PostgreSQL",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "sqltools.connections": [
+            {
+                "name": "Container database",
+                "driver": "PostgreSQL",
+                "previewLimit": 50,
+                "server": "localhost",
+                "port": 5432,
+                "database": "postgres",
+                "username": "postgres",
+                "password": "postgres"
+            }
+        ],
+        "workbench.colorTheme": "Cobalt2",
+        "python.pythonPath": "pdm run python",
+        "python.languageServer": "Pylance",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.autopep8Path": "pdm run autopep8",
+        "python.formatting.blackPath": "pdm run black",
+        "python.formatting.yapfPath": "pdm run yapf",
+        "python.linting.banditPath": "pdm run bandit",
+        "python.linting.flake8Path": "pdm run flake8",
+        "python.linting.mypyPath": "pdm run mypy",
+        "python.linting.pycodestylePath": "pdm run pycodestyle",
+        "python.linting.pydocstylePath": "pdm run pydocstyle",
+        "python.linting.pylintPath": "pdm run pylint",
+        "python.testing.pytestPath": "pdm run pytest",
+        "python.autoComplete.extraPaths": [
+            "__pypackages__/<major.minor>/lib"
+        ],
+        "python.analysis.extraPaths": [
+            "__pypackages__/<major.minor>/lib"
+        ]
+    },
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "knowsuchagency.pdm-task-provider",
+        "mongodb.mongodb-vscode",
+        "robbowen.synthwave-vscode",
+        "wesbos.theme-cobalt2",
+        "victoriadrake.kabukicho"
+    ],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [5000, 5432],
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "pip install --user -r requirements.txt",
+    // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "vscode"
+}

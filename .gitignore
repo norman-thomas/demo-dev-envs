@@ -1,3 +1,5 @@
 result
 __pypackages__
+.pdm.toml
 .DS_Store
+counter.txt
